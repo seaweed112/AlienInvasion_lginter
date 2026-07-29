@@ -15,7 +15,7 @@ class Ship:
 
         self.image = pygame.image.load('Assets/images/ship.png')
         self.rect = self.image.get_rect()
-        self.rect.midbottom = self.screen_rect.midbottom
+        self.center_ship()
         self.moving_right = False
         self.moving_left = False
 
@@ -27,4 +27,5 @@ class Ship:
 
     def blitme(self):
         self.screen.blit(self.image, self.rect)
-    
+    def center_ship(self):
+            self.rect.midbottom = self.screen_rect.midbottom
