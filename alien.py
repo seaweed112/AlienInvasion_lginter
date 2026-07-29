@@ -14,4 +14,9 @@ class Alien(Sprite):
         self.settings = ai_game.settings
 
     def update(self):
-        self.rect.x += self.settings.alien_speed
+        self.rect.x += self.settings.alien_speed * self.settings.fleet_direction
+
+    def check_edges(self):
+        """Returns True if alien is at the edge of the screen"""
+        screen_rect = self.screen.get_rect()
+        return (self.rect.right >= screen_rect.right) or (self.rect.left <= 0)
