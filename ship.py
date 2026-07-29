@@ -19,6 +19,8 @@ class Ship:
         image_path = Path('Assets') / 'images' / 'ship.png'
         self.image = pygame.image.load(image_path)
         self.rect = self.image.get_rect()
+        self.image = pygame.transform.rotate(self.image, 90)
+        self.rect = self.image.get_rect()
         self.center_ship()
 
         # Movement flags for vertical movement
