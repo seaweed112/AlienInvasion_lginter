@@ -130,10 +130,11 @@ class AlienInvasion:
     def _update_aliens(self):
         self._check_fleet_edges()
         self.aliens.update()
-
+        #has an alien shipo collided with the hero ship?
         if pygame.sprite.spritecollideany(self.ship, self.aliens):
             self._ship_hit()
-
+        self._check_aliens_bottom()
+        
     def _ship_hit(self):
         self.stats.ships_left -= 1
 
@@ -157,6 +158,12 @@ class AlienInvasion:
 
         self.settings.fleet_direction *= -1
 
+    def _check_aliens_bottom(self):
+        for alien in self.aliens.sprites():
+            if alien.rect.bottom >= self.settings.screen_height:
+                self._ship_hit()
+                break
+ 
 if __name__ == "__main__":
     ai = AlienInvasion()
     ai.run_game()
