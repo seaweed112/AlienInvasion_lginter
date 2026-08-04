@@ -78,7 +78,9 @@ class AlienInvasion:
         if not self.aliens:
             self.bullets.empty()
             self._create_fleet()
-            self.settings.increease_speed()
+            self.settings.increase_speed()
+            self.stats.level += 1
+            self.sb.prep_level()
 
     def _check_events(self):
         """Respond to keypresses and mouse events."""
@@ -100,6 +102,7 @@ class AlienInvasion:
     def _reset_game(self):
         self.stats.reset_stats()
         self.sb.prep_score()
+        self.sb.prep_level()
         self.game_active = True
 
         self.bullets.empty()
