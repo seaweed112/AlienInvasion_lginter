@@ -15,6 +15,7 @@ from settings import Settings
 from bullet import Bullet
 from alien import Alien
 from game_stats import GameStats
+from button import Button
 
 class AlienInvasion:
     """Overall class to manage game assets and behavior."""
@@ -23,7 +24,7 @@ class AlienInvasion:
         """Initialize the game, and create game resources."""
         pygame.init()
 
-        self.game_active = True
+        self.game_active = False
 
         self.settings = Settings()
         self.screen = pygame.display.set_mode(self.settings.resolution)
@@ -36,6 +37,7 @@ class AlienInvasion:
         self.aliens = pygame.sprite.Group()
 
         self.stats = GameStats(self)
+        self.play_button = Button(self, "Play")
 
         self._create_fleet()
 
@@ -80,6 +82,15 @@ class AlienInvasion:
                 self._check_keydown_events(event)
             elif event.type == pygame.KEYUP:
                 self._check_keyup_events(event)
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                mouse_pos = pygame.mouse.get_pos()
+                self._check_play_button(mouse_pos)
+
+    def _check_play_button(self, mouse_pos):
+        """Start a new game when the player clicks Play."""
+        button_clicked = self.play_button.rect.collidepoint(mouse_pos)
+        if button_clicked and not self.game_active:
+            self.game_active = True
 
     def _check_keydown_events(self, event):
         """Respond to keypresses."""
@@ -114,6 +125,9 @@ class AlienInvasion:
 
         self.ship.blitme()
         self.aliens.draw(self.screen)
+
+        if not self.game_active:
+            self.play_button.draw_button()
 
         pygame.display.flip()
 
