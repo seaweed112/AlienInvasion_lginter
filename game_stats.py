@@ -15,3 +15,4 @@ class GameStats:
     def reset_stats(self):
         """Begin tracking the amount of lives the player has left"""
         self.ships_left = self.settings.ship_lives
+        self.score = 0
