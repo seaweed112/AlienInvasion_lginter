@@ -7,9 +7,11 @@ Initial repo forked from RedBeard41
 """
 from pathlib import Path
 import pygame
-class Ship:
+from pygame.sprite import Sprite
+class Ship(Sprite):
     """Class for the player's ship"""
     def __init__(self, ai_game):
+        super().__init__()
         """Create ship and its starting position"""
         self.screen = ai_game.screen
         self.screen_rect = self.screen.get_rect()
