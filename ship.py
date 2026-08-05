@@ -4,6 +4,8 @@ Lincoln Ginter
 Alien Invasion Arcade Game - (Track 1)
 7/28/2026
 Initial repo forked from RedBeard41
+Purpose: Define the player's ship
+
 """
 from pathlib import Path
 import pygame

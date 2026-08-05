@@ -4,6 +4,8 @@ Lincoln Ginter
 Alien Invasion Arcade Game - (Track 1)
 7/28/2026
 Initial repo forked from RedBeard41
+Purpose: Manage the game's enemies
+
 """
 import pygame
 from pygame.sprite import Sprite

@@ -4,6 +4,8 @@ Lincoln Ginter
 Alien Invasion Arcade Game - (Track 1)
 7/28/2026
 Initial repo forked from RedBeard41
+Purpose: Run scoreboard logic
+
 """
 import pygame.font
 from ship import Ship
@@ -42,6 +44,7 @@ class Scoreboard:
         self.score_rect.top = 20
 
     def prep_high_score(self):
+        """Render the high score"""
         high_Score = round(self.stats.high_score, -1)
         high_score_str = f"{self.stats.high_score:,}"
         self.high_score_image = self.font.render(high_score_str, True, self.text_color, self.settings.bg_color)
@@ -58,6 +61,7 @@ class Scoreboard:
         self.ships.draw(self.screen)
 
     def check_high_score(self):
+        """Check if there's a new high score"""
         if self.stats.score > self.stats.high_score:
             self.stats.high_score = self.stats.score
             self.prep_high_score()

@@ -4,6 +4,8 @@ Lincoln Ginter
 Alien Invasion Arcade Game - (Track 1)
 7/28/2026
 Initial repo forked from RedBeard41
+Purpose: A button to start the game when pressed
+
 """
 import pygame.font
 
@@ -29,11 +31,13 @@ class Button:
         self._prep_msg()
 
     def _prep_msg(self):
+        """Render text on the button"""
         self.msg_image = self.font.render(self.msg, True, self.text_color, self.button_color)
         self.msg_image_rect = self.msg_image.get_rect()
         self.msg_image_rect.center = self.rect.center
 
     def draw_button(self):
+        "Render the button and message"
         self.screen.fill(self.button_color, self.rect)
         self.screen.blit(self.msg_image, self.msg_image_rect)
         self.msg_image_rect.center = self.rect.center

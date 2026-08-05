@@ -4,6 +4,8 @@ Lincoln Ginter
 Alien Invasion Arcade Game - (Track 1)
 7/28/2026
 Initial repo forked from RedBeard41
+Purpose: Track settings for the game
+
 """
 class Settings:
     """A class to store all settings for Alien Invasion."""
@@ -33,7 +35,7 @@ class Settings:
     def initialize_dynamic_settings(self):
         """Initialize dynamic settings"""
         self.ship_speed = 3.0
-        self.alien_speed = 1
+        self.alien_speed = 1.5
         self.bullet_speed = 5.0
         self.alien_points = 50
         self.fleet_direction = 1
