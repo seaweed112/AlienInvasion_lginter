@@ -52,8 +52,7 @@ class AlienInvasion:
                 self.ship.update()
                 self._update_aliens()
                 self._update_bullets()
-                self._update_aliens()
-                
+                                
             self._update_screen()
             self.clock.tick(60)
 
@@ -187,7 +186,7 @@ class AlienInvasion:
         
         if pygame.sprite.spritecollideany(self.ship, self.aliens):
             self._ship_hit()
-        self._check_aliens_bottom()
+        self._check_aliens_right()
 
     def _ship_hit(self):
         """React to being hit by an enemy"""
@@ -215,14 +214,14 @@ class AlienInvasion:
     def _change_fleet_direction(self):
         """Move down and reverse direction"""
         for alien in self.aliens.sprites(): 
-            alien.rect.y += self.settings.fleet_drop_speed
+            alien.rect.x += self.settings.fleet_drop_speed
 
         self.settings.fleet_direction *= -1
 
-    def _check_aliens_bottom(self):
-        """If the aliens reach the bottom of the screen, kill the player."""
+    def _check_aliens_right(self):
+        """If the aliens reach the right of the screen, kill the player."""
         for alien in self.aliens.sprites():
-            if alien.rect.bottom >= self.settings.screen_height:
+            if alien.rect.right >= self.settings.screen_width:
                 self._ship_hit()
                 break
  

@@ -17,6 +17,7 @@ class Alien(Sprite):
         self.screen = ai_game.screen
         image_path = Path('Assets') / 'images' / 'enemy_4.png'
         self.image = pygame.image.load(image_path)
+        self.image = pygame.transform.rotate(self.image, 90)
         self.rect = self.image.get_rect()
 
         self.rect.x = self.rect.width
